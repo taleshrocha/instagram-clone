@@ -11,4 +11,7 @@
   .pop-button {
     @apply h-4 cursor-pointer hover:scale-125 transition-all duration-150 ease-out;
   }
+  .post-button {
+    @apply h-7 hover:scale-125 transition-all duration-200 ease-out cursor-pointer;
+  }
 }

@@ -26,9 +26,18 @@ function Post({ id, userName, userImg, img, caption }) {
       </div>
 
       {/** Image */}
-      <img src={img} alt="" />
+      <img className="object-cover w-full" src={img} alt="" />
 
       {/** Buttons */}
+      <div className="flex justify-between px-4 pt-4">
+        <div className="flex space-x-4">
+          <HeartIcon className="post-button" />
+          <ChatIcon className="post-button" />
+          <PaperAirplaneIcon className="post-button" />
+        </div>
+
+        <BookmarkIcon className="post-button" />
+      </div>
 
       {/** Caption */}
 
