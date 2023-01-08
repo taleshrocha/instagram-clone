@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Feed from "../components/Feed";
 import Header from "../components/Header";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <Header />
 
       {/** Feed */}
+      <Feed />
 
       {/** Modal */}
     </div>

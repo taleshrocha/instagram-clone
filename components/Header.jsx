@@ -54,7 +54,7 @@ function Header() {
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="nav-button" />
 
-          <div className="relative">
+          <div className="hidden md:inline-flex relative">
             <p
               className="absolute -top-2 -right-1 text-xs h-5
              w-5 rounded-full bg-red-500 flex items-center
@@ -91,8 +91,8 @@ function Header() {
           </div>
 
           <img
-            className="h-10 w-10 rounded-full cursor-pointer object-contain border border-double border-red-500"
-            src="https://links.papareact.com/ocw"
+            className="h-10 w-10 rounded-full cursor-pointer object-contain p-[1.5px] border-2 border-red-500"
+            src="https://github.com/taleshrocha.png"
             alt="Profile picture"
           />
         </div>
