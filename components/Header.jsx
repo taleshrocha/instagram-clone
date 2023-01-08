@@ -7,11 +7,14 @@ import {
   PaperAirplaneIcon,
   MenuIcon,
 } from "@heroicons/react/outline";
+import { HomeIcon } from "@heroicons/react/solid";
+import { useState, useEffect } from "react";
 
 function Header() {
+  const [popOut, setPopOut] = useState(false);
   return (
     <div className="">
-      <div className="flex justify-between max-w-6xl">
+      <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         {/** Left */}
         <div className="relative hidden lg:inline-grid w-24 cursor-pointer">
           <Image
@@ -48,6 +51,28 @@ function Header() {
         </div>
 
         {/** Right */}
+        <div className="flex items-center justify-end space-x-4">
+          <HomeIcon className="nav-button" />
+          <PaperAirplaneIcon className="nav-button" />
+
+          {/** Pop-out menu */}
+          <button
+            className={`absolute md:hidden p-2 ${
+              popOut && "bg-gray-100 rounded-md"
+            }`}
+            onClick={() => setPopOut(!popOut)}
+          >
+            <MenuIcon className="h-6" />
+          </button>
+          {popOut && (
+            <div className="mt-12 absolute md:hidden flex bg-gray-100 p-2 rounded-md space-x-2">
+              <HomeIcon className="pop-button" />
+              <PaperAirplaneIcon className="pop-button" />
+              <HomeIcon className="pop-button" />
+              <PaperAirplaneIcon className="pop-button" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
