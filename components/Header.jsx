@@ -53,25 +53,48 @@ function Header() {
         {/** Right */}
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="nav-button" />
-          <PaperAirplaneIcon className="nav-button" />
+
+          <div className="relative">
+            <p
+              className="absolute -top-2 -right-1 text-xs h-5
+             w-5 rounded-full bg-red-500 flex items-center
+            justify-center animate-pulse text-white"
+            >
+              3
+            </p>
+            <PaperAirplaneIcon className="nav-button" />
+          </div>
+
+          <PlusCircleIcon className="nav-button" />
+          <UserGroupIcon className="nav-button" />
+          <HeartIcon className="nav-button" />
 
           {/** Pop-out menu */}
-          <button
-            className={`absolute md:hidden p-2 ${
-              popOut && "bg-gray-100 rounded-md"
-            }`}
-            onClick={() => setPopOut(!popOut)}
-          >
-            <MenuIcon className="h-6" />
-          </button>
-          {popOut && (
-            <div className="mt-12 absolute md:hidden flex bg-gray-100 p-2 rounded-md space-x-2">
-              <HomeIcon className="pop-button" />
-              <PaperAirplaneIcon className="pop-button" />
-              <HomeIcon className="pop-button" />
-              <PaperAirplaneIcon className="pop-button" />
-            </div>
-          )}
+          <div className="md:hidden flex items-center">
+            <button
+              className={`p-2 ${popOut && "bg-gray-100 rounded-t-full"}`}
+              onClick={() => setPopOut(!popOut)}
+            >
+              <MenuIcon className="h-6" />
+            </button>
+            {popOut && (
+              <div
+                className="absolute mt-12 flex items-center bg-gray-100 p-2 space-x-2
+            rounded-full"
+              >
+                <HomeIcon className="pop-button" />
+                <PaperAirplaneIcon className="pop-button" />
+                <HomeIcon className="pop-button" />
+                <PaperAirplaneIcon className="pop-button" />
+              </div>
+            )}
+          </div>
+
+          <img
+            className="h-10 w-10 rounded-full cursor-pointer object-contain border border-double border-red-500"
+            src="https://links.papareact.com/ocw"
+            alt="Profile picture"
+          />
         </div>
       </div>
     </div>
