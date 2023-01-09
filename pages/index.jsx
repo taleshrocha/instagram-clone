@@ -1,6 +1,9 @@
 import Head from "next/head";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/ModalAtom";
 import Feed from "../components/Feed";
 import Header from "../components/Header";
+import Modal from "../components/Modal";
 
 const Home = () => {
   return (
@@ -10,13 +13,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/** Header */}
       <Header />
-
-      {/** Feed */}
       <Feed />
 
       {/** Modal */}
+      <Modal />
     </div>
   );
 };
