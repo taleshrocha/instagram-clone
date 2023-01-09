@@ -9,9 +9,12 @@ import {
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
+  const { data: session } = useSession();
   const [popOut, setPopOut] = useState(false);
+  console.log(session);
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
@@ -54,21 +57,33 @@ function Header() {
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="nav-button" />
 
-          <div className="hidden md:inline-flex relative">
-            <p
-              className="absolute -top-2 -right-1 text-xs h-5
+          {session ? (
+            <>
+              <div className="hidden md:inline-flex relative">
+                <p
+                  className="absolute -top-2 -right-1 text-xs h-5
              w-5 rounded-full bg-red-500 flex items-center
             justify-center animate-pulse text-white"
-            >
-              3
-            </p>
-            <PaperAirplaneIcon className="nav-button" />
-          </div>
+                >
+                  3
+                </p>
+                <PaperAirplaneIcon className="nav-button" />
+              </div>
 
-          <PlusCircleIcon className="nav-button" />
-          <UserGroupIcon className="nav-button" />
-          <HeartIcon className="nav-button" />
+              <PlusCircleIcon className="nav-button" />
+              <UserGroupIcon className="nav-button" />
+              <HeartIcon className="nav-button" />
 
+              <img
+                onClick={signOut}
+                className="h-10 w-10 rounded-full cursor-pointer object-contain p-[1.5px] border-2 border-red-500"
+                src={session.user.image}
+                alt="Profile picture"
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign In</button>
+          )}
           {/** Pop-out menu */}
           <div className="md:hidden flex items-center">
             <button
@@ -89,12 +104,6 @@ function Header() {
               </div>
             )}
           </div>
-
-          <img
-            className="h-10 w-10 rounded-full cursor-pointer object-contain p-[1.5px] border-2 border-red-500"
-            src="https://github.com/taleshrocha.png"
-            alt="Profile picture"
-          />
         </div>
       </div>
     </div>

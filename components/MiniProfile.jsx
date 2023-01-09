@@ -1,4 +1,9 @@
+import { signOut, useSession } from "next-auth/react";
 function MiniProfile() {
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <div
       className="flex items-center justify-between
@@ -6,16 +11,17 @@ function MiniProfile() {
     >
       <img
         className="cursor-pointer w-16 h-16 rounded-full border-2 p-[2px] border-red-500"
-        src="https://github.com/taleshrocha.png"
+        src={session?.user?.email}
         alt=""
       />
 
       <div className="flex-1 mx-4 cursor-default">
-        <h2 className="font-bold">taleshrocha</h2>
+        <h2 className="font-bold">{session?.user?.username}</h2>
         <h3 className="text-sm text-gray-400">Welcome to Instagram</h3>
       </div>
 
       <button
+        onClick={signOut}
         className="text-blue-400 text-sm
       font-semibold"
       >

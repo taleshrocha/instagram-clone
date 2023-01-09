@@ -12,4 +12,14 @@ export default NextAuth({
   pages: {
     signIn: "/auth/signin",
   },
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user.username = session.user.name
+        .split(" ")
+        .join("")
+        .toLowerCase();
+      session.user.id = token.sub;
+      return session;
+    },
+  },
 });
