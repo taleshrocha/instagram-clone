@@ -18,7 +18,9 @@ function Header() {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
   const router = useRouter();
+
   const [popOut, setPopOut] = useState(false);
+
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
@@ -82,7 +84,7 @@ function Header() {
 
               <PlusCircleIcon
                 className="nav-button"
-                onClick={() => setOpen(!open)}
+                onClick={() => setOpen(true)}
               />
               <UserGroupIcon className="nav-button" />
               <HeartIcon className="nav-button" />
