@@ -7,8 +7,10 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
+import { useSession } from "next-auth/react";
 
 function Post({ id, userName, userImg, img, caption }) {
+  const { data: session } = useSession();
   return (
     <div
       className="bg-white my-7 border
@@ -29,15 +31,17 @@ function Post({ id, userName, userImg, img, caption }) {
       <img className="object-cover w-full" src={img} alt="" />
 
       {/** Buttons */}
-      <div className="flex justify-between px-4 pt-4">
-        <div className="flex space-x-4">
-          <HeartIcon className="post-button" />
-          <ChatIcon className="post-button" />
-          <PaperAirplaneIcon className="post-button" />
-        </div>
+      {session && (
+        <div className="flex justify-between px-4 pt-4">
+          <div className="flex space-x-4">
+            <HeartIcon className="post-button" />
+            <ChatIcon className="post-button" />
+            <PaperAirplaneIcon className="post-button" />
+          </div>
 
-        <BookmarkIcon className="post-button" />
-      </div>
+          <BookmarkIcon className="post-button" />
+        </div>
+      )}
 
       {/** Caption */}
       <p className="p-5 truncate">
@@ -48,15 +52,17 @@ function Post({ id, userName, userImg, img, caption }) {
       {/** Comments */}
 
       {/** Input box */}
-      <form className="flex items-center p-4" action="">
-        <EmojiHappyIcon className="h-7" />
-        <input
-          className="border-none flex-1 focus:ring-0 outline-none"
-          placeholder="Add a comment..."
-          type="text"
-        />
-        <button className="font-semibold text-blue-400">Post</button>
-      </form>
+      {session && (
+        <form className="flex items-center p-4" action="">
+          <EmojiHappyIcon className="h-7" />
+          <input
+            className="border-none flex-1 focus:ring-0 outline-none"
+            placeholder="Add a comment..."
+            type="text"
+          />
+          <button className="font-semibold text-blue-400">Post</button>
+        </form>
+      )}
     </div>
   );
 }
