@@ -11,7 +11,7 @@ function MiniProfile() {
     >
       <img
         className="cursor-pointer w-16 h-16 rounded-full border-2 p-[2px] border-red-500"
-        src={session?.user?.email}
+        src={session?.user?.image}
         alt=""
       />
 
