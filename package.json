@@ -13,6 +13,7 @@
     "next-auth": "^4.18.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-moment": "^1.1.2",
     "recoil": "^0.7.6",
     "tailwind-scrollbar-hide": "^1.1.7"
   },

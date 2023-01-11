@@ -18,6 +18,7 @@ import {
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import Moment from "react-moment";
 
 function Post({ id, userName, userImg, img, caption }) {
   const { data: session } = useSession();
@@ -107,6 +108,9 @@ function Post({ id, userName, userImg, img, caption }) {
                 <span className="font-bold">{comment.data().userName}</span>{" "}
                 {comment.data().comment}
               </p>
+              <Moment fromNow className="pr-5 text-xm">
+                {comment.data().timestamp?.toDate()}
+              </Moment>
             </div>
           ))}
         </div>
