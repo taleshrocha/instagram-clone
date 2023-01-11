@@ -13,6 +13,7 @@ import {
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   onSnapshot,
   orderBy,
@@ -30,7 +31,7 @@ function Post({ id, userName, userImg, img, caption }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
-  const [hasLiked, setHasLiked] = UsersIcon(false);
+  const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(
     () =>
@@ -44,6 +45,7 @@ function Post({ id, userName, userImg, img, caption }) {
     [db, id]
   );
 
+  // Populate the likes
   useEffect(
     () =>
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
@@ -52,11 +54,26 @@ function Post({ id, userName, userImg, img, caption }) {
     [db, id]
   );
 
+  // Get if the user has liked the post every time the 'likes' changes
+  useEffect(
+    () =>
+      setHasLiked(
+        likes.findIndex((like) => like.id === session?.user?.id) !== -1
+      ),
+    [likes]
+  );
+
   const likePost = async () => {
-    await setDoc(doc(db, "posts", id, "likes", session.user.id), {
-      userName: session.user.username,
-    });
+    if (hasLiked) {
+      await deleteDoc(doc(db, "posts", id, "likes", session.user.id));
+    } else {
+      await setDoc(doc(db, "posts", id, "likes", session.user.id), {
+        userName: session.user.username,
+      });
+    }
   };
+
+  console.log(hasLiked);
 
   const sendComment = async (e) => {
     e.preventDefault();
@@ -73,7 +90,6 @@ function Post({ id, userName, userImg, img, caption }) {
     });
   };
 
-  console.log(comments);
   return (
     <div
       className="bg-white my-7 border
