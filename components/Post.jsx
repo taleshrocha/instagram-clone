@@ -73,8 +73,6 @@ function Post({ id, userName, userImg, img, caption }) {
     }
   };
 
-  console.log(hasLiked);
-
   const sendComment = async (e) => {
     e.preventDefault();
 
@@ -113,7 +111,15 @@ function Post({ id, userName, userImg, img, caption }) {
       {session && (
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
-            <HeartIcon onClick={likePost} className="post-button" />
+            {hasLiked ? (
+              <HeartIconFilled
+                onClick={likePost}
+                className="post-button text-red-500"
+              />
+            ) : (
+              <HeartIcon onClick={likePost} className="post-button" />
+            )}
+
             <ChatIcon className="post-button" />
             <PaperAirplaneIcon className="post-button" />
           </div>
@@ -124,6 +130,11 @@ function Post({ id, userName, userImg, img, caption }) {
 
       {/** Caption */}
       <p className="p-5 truncate">
+        {likes.length > 0 && (
+          <p className="font-bold mb-1">
+            {likes.length} like{likes.length === 1 ? "" : "1"}
+          </p>
+        )}
         <span className="font-bold mr-1">{userName} </span>
         {caption}
       </p>
