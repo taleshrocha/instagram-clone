@@ -7,15 +7,34 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
 
 function Post({ id, userName, userImg, img, caption }) {
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "posts", id, "comments"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setComments(snapshot.docs)
+      ),
+    [db]
+  );
 
   const sendComment = async (e) => {
     e.preventDefault();
@@ -32,6 +51,7 @@ function Post({ id, userName, userImg, img, caption }) {
     });
   };
 
+  console.log(comments);
   return (
     <div
       className="bg-white my-7 border
@@ -71,6 +91,26 @@ function Post({ id, userName, userImg, img, caption }) {
       </p>
 
       {/** Comments */}
+      {comments.length > 0 && (
+        <div
+          className="ml-10 h-20 overflow-y-scroll
+        scrollbar-thumb-black scrollbar-thin"
+        >
+          {comments.map((comment) => (
+            <div key={comment.id} className="flex items-center space-x-2 mb-3">
+              <img
+                className="h-7 rounded-full"
+                src={comment.data().userImage}
+                alt=""
+              />
+              <p className="text-sm flex-1">
+                <span className="font-bold">{comment.data().userName}</span>{" "}
+                {comment.data().comment}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/** Input box */}
       {session && (
