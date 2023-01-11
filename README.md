@@ -71,7 +71,7 @@ npm run dev
 
 ## Responsive Design
 
-It has responsive design to allow a better experience to any user in any screen size.
+It has responsive design to allow a better experience to any user in any screen size. This was made easy by Tailwind breakpoints.
 
 ![](./images/responsive.gif)
 
@@ -89,7 +89,7 @@ It's possible to add comments to the Posts thanks to <a href="https://firebase.g
 
 ## Login
 
-You can login with your Google account.
+You can login with your Google account thanks to <a href="https://next-auth.js.org/">NextAuth.js</a>.
 
 ![](./images/login.gif)
 
