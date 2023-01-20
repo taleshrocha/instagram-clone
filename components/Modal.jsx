@@ -29,11 +29,8 @@ function Modal() {
     setLoading(true);
 
     // Create a post and add to firestore 'posts' collection
-
     // Get the post id for the newly created post
-
     // Upload the image to firebase storage with the post id
-
     // Get a download url from firebase storage and update the original post with image
 
     const docRef = await addDoc(collection(db, "posts"), {
