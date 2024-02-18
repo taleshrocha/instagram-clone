@@ -1,27 +1,4 @@
-<a name="readme-top"></a>
-
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-
-<H3 align="center">Instagram Clone</h3>
-
-  <p align="center">
-  An Instagram clone app.
-    <br />
-    <a href="https://instagram-clone-ec7xfmmbz-taleshrochaz-gmailcom.vercel.app/">View deploy</a>
-    ·
-    <a href="https://github.com/taleshrocha/instagram-clone/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/taleshrocha/instagram-clone/issues">Request Feature</a>
-  </p>
-</div>
-
-# About The Project
+# About
 
 ![](./images/front.png)
 
@@ -98,20 +75,6 @@ You can login with your Google account thanks to <a href="https://next-auth.js.o
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Acknowledgments
-
-This project was possible thanks to [Sonny Sangha](https://www.youtube.com/watch?v=6fNy0iD3hsk&t=1s) on YouTube.
-
-<div align="center">
-<a href="https://github.com/taleshrocha">
- <img style="border-radius: 50%;" src="https://github.com/taleshrocha.png" width="100px;" alt="Tales Rocha's profile photo"/>
- <br />
- <sub><b>Tales Rocha</b></sub></a>
-
-Done with ❤️ by Tales Rocha 👋🏽 Contact me!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
