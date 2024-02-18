@@ -9,9 +9,7 @@ and <a href="https://next-auth.js.org/">NextAuth.js</a>.
 
 ### Built With
 
-- [![javascript-badge]][javascript-url]
 - [![tailwindcss-badge]][tailwindcss-url]
-- [![react-badge]][react-url]
 - [![next-badge]][next-url]
 - [![firebase-badge]][firebase-url]
 
