@@ -76,6 +76,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Acknowledgments
+
+This project was possible thanks to [Sonny Sangha](https://www.youtube.com/watch?v=6fNy0iD3hsk&t=1s) on YouTube.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 [contributors-shield]: https://img.shields.io/github/contributors/taleshrocha/move-it.svg?style=for-the-badge
 [contributors-url]: https://github.com/taleshrocha/move-it/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/taleshrocha/move-it.svg?style=for-the-badge
